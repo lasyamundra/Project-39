@@ -69,13 +69,18 @@ function draw() {
    if (obstacleGroup.isTouching(body)||body.y<0||body.y>500){
       gameState = END;
 
-      fill (255,255,255)
-      textSize (30)
-      text ("Game Over",250,250);
+      
     }
   }  
   
- if (gameState === END){
+ 
+   
+  spawnObjects();
+  spawnObstacles();
+    
+  drawSprites();
+  
+  if (gameState === END){
     ground.velocityX= 0;
     obstacleGroup.setVelocityXEach (0);
     objectsGroup.setVelocityXEach (0);
@@ -83,12 +88,11 @@ function draw() {
     objectsGroup.destroyEach();
     body.velocityY = 0;
     gameoverSound.play ();
- }
    
-  spawnObjects();
-  spawnObstacles();
-    
-  drawSprites();
+    fill (255,255,255)
+    textSize (30)
+    text ("Game Over",250,250);
+ }
  
   textSize(20);
   fill("white");
